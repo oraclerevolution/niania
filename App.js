@@ -16,6 +16,7 @@ import CodeOtp from './pages/Auth/CodeOtp';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Profil from './pages/Profil';
 import SendForm from './pages/Transactions/SendForm';
+import Annonces from './pages/Profile/Annonces';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,6 +93,7 @@ const navigationBeforeLogin = () => {
       <Stack.Screen name="CodeOtp" component={CodeOtp} options={{ headerShown: false }} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="SendForm" component={SendForm} options={{ headerShown: false }} />
+      <Stack.Screen name="Annonces" component={Annonces} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }

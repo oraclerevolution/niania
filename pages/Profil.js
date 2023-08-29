@@ -60,6 +60,7 @@ const Profil = ({ navigation }) => {
                         title="Annonces"
                         left={props => <List.Icon {...props} icon="information" />}
                         right={props => <Badge>3</Badge>}
+                        onPress={() => navigation.navigate('Annonces')}
                     />
                     <List.Item
                         title="Parrainage"
