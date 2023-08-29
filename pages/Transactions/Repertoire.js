@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import * as Contacts from "expo-contacts"
 import { Modal, Portal, PaperProvider } from 'react-native-paper'
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Repertoire = ({ navigation }) => {
   const [phoneNumberData, setPhoneNumberData] = useState([]);
@@ -10,7 +11,7 @@ const Repertoire = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: 'white', padding: 20};
+  const containerStyle = { backgroundColor: 'white', padding: 20, position:"relative"};
 
   const Item = ({ id, lastName, firstName, phoneNumbers }) => (
     <TouchableOpacity style={{ flex: 1, flexDirection: "column", borderBottomWidth: 0.5, borderColor: "lightgray", height: 50, justifyContent: "center", paddingLeft: 10 }} onPress={() => selectNumberForSend(phoneNumbers)}>
@@ -61,6 +62,7 @@ const Repertoire = ({ navigation }) => {
         <PaperProvider>
           <Portal>
             <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                <MaterialCommunityIcons name="close-circle" size={30} color="black" style={{position:"absolute", top:10, right:10}} onPress={() => hideModal()} />
               <Text style={{marginBottom:10}}>Selectionnez le numero destinataire:</Text>
               <FlatList
                 data={phoneNumberSelected}

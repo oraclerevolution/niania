@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     flex:0.9,
-    position:"relative"
+    position:"relative",
+    justifyContent:"center",
   },
   label: {
     fontSize: 18,
