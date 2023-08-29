@@ -12,7 +12,7 @@ const TapeAmountInput = ({ value, onChangeText }) => {
         onChangeText={onChangeText}
         placeholder="5000"
       />
-      <Text style={{fontSize:20,fontWeight:"bold", textAlign:"center"}}>Frais: 150</Text>
+      <Text style={{fontSize:20,fontWeight:"bold", textAlign:"center", position:"absolute", bottom:0, left:"30%", color:"gray"}}>Frais d'envoi: 150</Text>
     </View>
   );
 };
@@ -20,6 +20,8 @@ const TapeAmountInput = ({ value, onChangeText }) => {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
+    flex:0.9,
+    position:"relative"
   },
   label: {
     fontSize: 18,

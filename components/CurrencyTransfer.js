@@ -33,7 +33,8 @@ const CurrencyTransfer = ({ currencyData, onCurrencySelect, Sltedcurrency }) => 
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 1,
+    flex:1,
+    justifyContent: "flex-end",
   },
   label: {
     fontSize: 16,

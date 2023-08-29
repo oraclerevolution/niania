@@ -6,7 +6,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import TapeAmountInput from '../../components/TapeAmountInput';
 import CurrencyTransfer from '../../components/CurrencyTransfer';
 
-const SendForm = ({ navigation }) => {
+const SendForm = ({ navigation, route }) => {
+    const correspondant = route.params?.correspondant
+    console.log("correspondant", correspondant);
     const [tapeAmount, setTapeAmount] = useState('');
     const DATA = [
         {
@@ -32,6 +34,7 @@ const SendForm = ({ navigation }) => {
     const currencyData = [
         { currency: 'XOF Solde', balance: "100000" },
         { currency: 'XAF Solde', balance: "89384" },
+        { currency: 'USD Solde', balance: "0" },
     ];
 
     const handleTapeAmountChange = (text) => {
@@ -39,8 +42,8 @@ const SendForm = ({ navigation }) => {
     };
 
     const Item = ({ id, title, number, image }) => (
-            <TouchableOpacity style={{ flex: 1, flexDirection:"column", flexDirection: "row", height: 100, width:100, marginTop: "3%", borderRadius:"50%", marginRight: 10 }}>
-                    <Image style={{ width: "100%", height: "100%", borderRadius: "50%" }} source={require("../../assets/icon.png")} />
+            <TouchableOpacity style={{ flex: 1, flexDirection:"column", height: 100, width:100, marginTop: "3%", borderRadius:"50%", marginRight: 10 }}>
+                    <Image style={{ width: "100%", height: "100%", borderRadius: 50 }} source={require("../../assets/icon.png")} />
             </TouchableOpacity>
     );
 
@@ -78,18 +81,22 @@ const SendForm = ({ navigation }) => {
                 <View style={{ padding: 10, flex:1 }}>
                     <TapeAmountInput value={tapeAmount} onChangeText={handleTapeAmountChange} />
                     <View style={{justifyContent:"space-between", alignItems:"center", flexDirection:"row"}}>
-                        <View style={{flex:1.8, flexDirection:"row", borderWidth:1, borderColor:'lightgray', justifyContent:"center", alignItems:"center", borderRadius:20, padding:8, margin:3}}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Repertoire")} style={{flex:1.8, flexDirection:"row", borderWidth:1, borderColor:'lightgray', justifyContent:"center", alignItems:"center", borderRadius:20, padding:8, margin:3}}>
                             <Text style={{fontSize:20}}>Sélectionner l'utilisateur  </Text>
                             <MaterialCommunityIcons name="human-edit" size={25} color="black" />
-                        </View>
+                        </TouchableOpacity>
                         <View style={{flex:1, flexDirection:"row", borderWidth:1, borderColor:'lightgray', justifyContent:"center", alignItems:"center", borderRadius:20, padding:8, margin:3}}>
                             <Text style={{fontSize:20}}>Scanner QR  </Text>
                             <MaterialCommunityIcons name="qrcode" size={25} color="black" />
                         </View>
                     </View>
-                    <View>
+                    <View style={{flex:0.4}}>
+                        <Text style={{fontWeight:"bold", fontSize:17, textAlign:"center", marginTop:"3%", color:"gray"}}>Vous envoyez à </Text>
+                        <Text style={{fontWeight:"bold", fontSize:30, textAlign:"center", marginTop:"3%"}}>{correspondant}</Text>
+                    </View>
+                    <View style={{flex:1}}>
                         <CurrencyTransfer currencyData={currencyData} onCurrencySelect={handleTapeAmountChange} />
-                        <Button mode="contained" style={{backgroundColor:"#7c55fe"}} onPress={() => navigation.navigate("Annonces")}>Envoyer</Button>
+                        <Button mode="contained" style={{backgroundColor:"#7c55fe", marginBottom:"3%"}} labelStyle={{color:"white", fontSize:20}} onPress={() => navigation.navigate("Annonces")}>Envoyer</Button>
                     </View>
                 </View>
                 {/* <View style={styles.keyboardView}>
