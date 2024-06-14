@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList, SafeAreaView, Platform } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useAffect } from 'react'
 import Header from '../components/Header'
 import { Button, TextInput, Snackbar } from 'react-native-paper'
 import Icon from "react-native-vector-icons/Ionicons"
